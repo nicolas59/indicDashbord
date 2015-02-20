@@ -51,7 +51,6 @@
     <li><a href="#graphiqueTapestry"><%= __('template.tab3')%></a></li>
     <li><a href="#graphThreadPool"><%= __('template.tab4')%></a></li>
     <li><a href="#graphJDBC"><%= __('template.tab5')%></a></li>
-    <li><a href="#graphApache"><%= __('template.tab6')%></a></li>
 </ul>
 
 <div class="tab-content">
@@ -137,7 +136,7 @@
                     <td id="max_nbrMaxConnexionBusy"><%=maxIndicateur8%></td>
 
                 </tr>
-
+<!--
                 <tr>
                     <td>7</td>
                     <td><%= __('template.indicateur9')%></td>
@@ -170,6 +169,7 @@
                     <td id="max_nbrRequete10s"><%=maxIndicateur11%></td>
 
                 </tr>
+            -->
                 </tbody>
             </table>
         </div>
@@ -194,9 +194,7 @@
         <div class="well well-sm well-perso"><%= __('graph.thread.description')%></div>
     </div>
 
-    <div class="tab-pane" id="graphApache">
-        <div class="well well-sm well-perso"><%= __('graph.apache.description')%></div>
-    </div>
+
 
 </div>
 
@@ -221,6 +219,8 @@
 <script src="/bower_components/bootstrap/js/scrollspy.js"></script>
 <script src="/bower_components/bootstrap/js/collapse.js"></script>
 <script src="/bower_components/bootstrap/js/tab.js"></script>
+<script src="/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="/bower_components/moment/min/moment.min.js"></script>
 <!-- endbuild -->
 
 <!-- build:js /views/public/javascripts/main.js -->
@@ -245,14 +245,54 @@
         $(this).tab('show');
         closePopins();
     });
+
+
+    var files = getFilesInCookie();
+    function selectDateLogValid(date) {
+        for (var i = 0; i < files.length; i++) {
+            var dateFile = formatDate(files[i], "00:00:00")
+            if (date.getDate() === dateFile.getDate() && date.getMonth() === dateFile.getMonth() && date.getYear() === dateFile.getYear()) {
+                return [true, 'highlight'];
+            }
+        }
+        return [false, ''];
+    }
+    $("#dateFin").datepicker({
+        dateFormat: 'dd/mm/yy',
+        inline: true,
+        nextText: '',
+        prevText: '',
+        numberOfMonths: [1, 1],
+        dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        beforeShowDay: selectDateLogValid
+    });
+
+    $("#dateDeb").datepicker({
+        dateFormat: 'dd/mm/yy',
+        inline: true,
+        nextText: '',
+        prevText: '',
+        numberOfMonths: [1, 1],
+        dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        beforeShowDay: selectDateLogValid
+    });
+
+
+
 </script>
 
 <!-- build:js /views/public/javascripts/graphs.js -->
+
 <script src="/public/javascripts/loginMonitoring.js"></script>
 <script src="/public/javascripts/tapestryMonitoring.js"></script>
 <script src="/public/javascripts/databaseMonitoring.js"></script>
 <script src="/public/javascripts/threadMonitoring.js"></script>
-<script src="/public/javascripts/apacheMonitoring.js"></script>
+
 <!-- endbuild -->
+<script>
+
+
+</script>
+
 </body>
 </html>

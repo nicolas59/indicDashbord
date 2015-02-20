@@ -31,6 +31,12 @@ d3.csv(getPathFiles('/access.log'), function (error, data) {
 
     });
 
+
+    data = data.filter(function(item){
+       return item.page.indexOf("/static")<0;
+    });
+
+
     var dateMin = d3.min(data, function (d) {
         return d.date;
     });

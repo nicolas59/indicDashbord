@@ -39,3 +39,49 @@ exports.template_rapport = function(req, res){
             maxIndicateur11: settings.max.indicateur11
         });
 };
+var qs = require('querystring');
+exports.exportCSV = function(req, res){
+
+    //obtain csv
+    var body = '';
+    req.on('data', function (data) {
+        body += data;
+
+        // Too much POST data, kill the connection!
+        if (body.length > 1e6)
+            req.connection.destroy();
+    });
+    req.on('end', function () {
+        var post = qs.parse(body);
+
+        var data = JSON.parse(post["data"]);
+
+       res.writeHead(200, {'Content-Type': 'text/csv', "Content-disposition":"attachment;filename=export.csv"});
+        var headers = [];
+        data.headers.forEach(function(item) {
+            headers.push(item);
+        });
+        headers.push("\n");
+        res.write(headers.join(";"));
+
+        data.rows.forEach(function(item){
+              var tab = new Array();
+            for(var field in item){
+                if(field==="page"){
+                    tab.push(item[field]);
+                }else if(item[field]){
+                    tab.push((item[field]+"").replace(/\./g,","));
+                }else {
+                    tab.push("0");
+                }
+            }
+            tab.push("\n");
+            res.write(tab.join(";"));
+
+         });
+
+        res.end();
+    });
+
+
+};

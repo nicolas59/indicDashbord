@@ -51,10 +51,29 @@ function getDateAnalyseInUrl(urlPath) {
 /**
  * Retourne le chemin complet du fichier
  * @param file nom du fichier
+ * @param {Date?} Date de recherche
  * @return {String} chemin du fichier
  */
-function getPathFiles(file) {
-    return '/files/' + getDateAnalyseInUrl(window.location.pathname) + '/' + getNodeValueInUrl(window.location.pathname) + file;
+function getPathFiles(file, date) {
+    var path;
+    if(date && date!=null){
+        var day = date.getDate();
+        var month = date.getMonth()+1;
+        if(day<10){
+            day = "0"+day;
+        }
+        if(month<10){
+            month = "0"+month;
+        }
+        path ='/files/' + date.getFullYear()+month+day + '/' + getNodeValueInUrl(window.location.pathname) + file;
+    }else{
+        path ='/files/' + getDateAnalyseInUrl(window.location.pathname) + '/' + getNodeValueInUrl(window.location.pathname) + file;
+    }
+    return path;
+}
+
+function transform2Char(t){
+
 }
 
 /**

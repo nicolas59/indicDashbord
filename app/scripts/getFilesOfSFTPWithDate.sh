@@ -9,7 +9,7 @@
 # Verification des parametres                                                                                           #
 #                                                                                                                       #
 #########################################################################################################################
-if [ $# -ne 2 ]
+if [ $# -ne 3 ]
 then
         echo "Le nombre de parametre est incorrect."
         echo "sh getFilesOfSFTP.sh <CONNEXION_SFTP> <DIR_LOG>"
@@ -34,11 +34,11 @@ fi;
 #                                                                                                                       #
 #########################################################################################################################
 CONNEXION_SFTP=$1
-DIR_LOG=$2
 sourceDir=/SARA/echange/intercosigaes/production/
-DAY_DATE=$(date "+%Y%m%d")
-DAY_DATE_DIR=$(date "+%Y%m%d")
-DAY_DATE_LOG4J=$(date  "+%Y-%m-%d")
+DIR_LOG=$2
+DAY_DATE=$3
+DAY_DATE_DIR=$3
+DAY_DATE_LOG4J=$3
 
 #########################################################################################################################
 #                                                                                                                       #
@@ -53,12 +53,12 @@ function createDirectory(){
 	if [ -d ${DIR_LOG} ]
 	then
 	    mkdir -p  ${DIR_LOG}/${DAY_DATE_DIR}
-		mkdir -p  ${DIR_LOG}/${DAY_DATE_DIR}/node1
-	    mkdir -p  ${DIR_LOG}/${DAY_DATE_DIR}/node2
+        mkdir -p  ${DIR_LOG}/${DAY_DATE_DIR}/node1
+        mkdir -p  ${DIR_LOG}/${DAY_DATE_DIR}/node2
         mkdir -p  ${DIR_LOG}/${DAY_DATE_DIR}/node3
         mkdir -p  ${DIR_LOG}/${DAY_DATE_DIR}/node4
-		rm -rf ${DIR_LOG}/${DAY_DATE_DIR}/node1/*
-		rm -rf ${DIR_LOG}/${DAY_DATE_DIR}/node2/*
+        rm -rf ${DIR_LOG}/${DAY_DATE_DIR}/node1/*
+        rm -rf ${DIR_LOG}/${DAY_DATE_DIR}/node2/*
         rm -rf ${DIR_LOG}/${DAY_DATE_DIR}/node3/*
         rm -rf ${DIR_LOG}/${DAY_DATE_DIR}/node4/*
 	else
@@ -66,7 +66,6 @@ function createDirectory(){
         exit 1
 	fi
 }
-
 
 ##
 # Permet de récuperer les logs du jour sur le SFTP pour le serveur tomcat.

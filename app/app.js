@@ -45,6 +45,9 @@ app.get('/', routes.index);
 app.get('/index', routes.index);
 app.get('/index/:date', routes.index);
 app.get('/template_rapport/:date/:node', routes.template_rapport);
+app.post('/exportCSV', routes.exportCSV);
+
+
 
 
 http.createServer(app).listen(app.get('port'), function () {

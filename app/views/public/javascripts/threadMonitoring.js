@@ -25,6 +25,13 @@ d3.csv(getPathFiles('/monitoring_app_thread_http.log'), function (error, data) {
     var maxY = 0;
     var dateDuJour = null;
 
+    var validateNumber = function(data, defaultValue){
+        if(isNaN(data)){
+            return defaultValue!== undefined?defaultValue:0;
+        }
+        return data;
+    }
+
     //L heure est donnne en AM PM dans le fichier CSV monitoring app thread http.
     // Pour differencier les deux, nous allons placer un boolean permettant de savoir si nous avons passe
     // l'heure du midi. Si cette heure est passé nous sommes donc en PM.
@@ -32,6 +39,7 @@ d3.csv(getPathFiles('/monitoring_app_thread_http.log'), function (error, data) {
     var isPm = false;
 
     // Recuperation des données dans le CSV
+    var lastData = null;
     data.forEach(function (d) {
         var heure = d.date.substring(11, 19);
 
@@ -54,13 +62,14 @@ d3.csv(getPathFiles('/monitoring_app_thread_http.log'), function (error, data) {
             dateDuJour = d.date.substring(6, 10) + d.date.substring(3, 5) + d.date.substring(0, 2);
         }
         d.dateHeure = formatDate(dateDuJour, heure);
-        d.currentThreadsBusy = d.currentThreadsBusy;
-        d.currentThreadCount = d.currentThreadCount;
-        d.maxSpareThreads = d.maxSpareThreads;
-        d.maxThreads = d.maxThreads;
+        d.currentThreadsBusy = validateNumber(d.currentThreadsBusy, lastData!=null?lastData.currentThreadsBusy:0);
+        d.currentThreadCount = validateNumber(d.currentThreadCount, lastData!=null?lastData.currentThreadCount:0);
+        d.maxSpareThreads = validateNumber(d.maxSpareThreads, lastData!=null?lastData.maxSpareThreads:0);
+        d.maxThreads = validateNumber(d.maxThreads, lastData!=null?lastData.maxThreads:0);
         if (parseInt(d.maxThreads) + 5 > parseInt(maxY)) {
             maxY = 60;
         }
+        lastData = d;
     });
 
 
@@ -135,7 +144,7 @@ d3.csv(getPathFiles('/monitoring_app_thread_http.log'), function (error, data) {
             return x(d.dateHeure);
         })
         .y(function (d) {
-            return y(d.currentThreadCount);
+            return validateNumber( d.currentThreadCount);
         });
 
     var lineCurrentThreadCount = svgThreadPool.append('path').datum(data).style('stroke',function () {
@@ -157,7 +166,7 @@ d3.csv(getPathFiles('/monitoring_app_thread_http.log'), function (error, data) {
             return x(d.dateHeure);
         })
         .y(function (d) {
-            return y(d.maxSpareThreads);
+            return y(validateNumber(d.maxSpareThreads));
         });
 
     var lineMaxSpareThreads = svgThreadPool.append('path').datum(data).style('stroke',function () {
@@ -179,7 +188,7 @@ d3.csv(getPathFiles('/monitoring_app_thread_http.log'), function (error, data) {
             return x(d.dateHeure);
         })
         .y(function (d) {
-            return y(d.maxThreads);
+            return y(validateNumber(d.maxThreads));
         });
 
     var lineMaxThreads = svgThreadPool.append('path').datum(data).style('stroke',function () {
@@ -345,4 +354,10 @@ d3.csv(getPathFiles('/monitoring_app_thread_http.log'), function (error, data) {
     });
     putInResumeStat('resume_nbrThreadBusyMax', maxBusyThread);
     putInResumeStat('resume_nbrThreadUtilise', maxCountThread);
+
+ //Permet de mettre a jour la progress bar.
+    progressBarEvolution(false);
+    //Permet de changer la couleur des lignes du tableau de statistiques
+    updateIndicateur();
+    
 });

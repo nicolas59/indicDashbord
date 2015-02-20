@@ -30,10 +30,13 @@
 	"template.indicateur11": "Pourcentage/Nombre de requêtes de plus de 10s",
 	"index.node1": "Node 1",
 	"index.node2": "Node 2",
+	"index.node3": "Node 3",
+	"index.node4": "Node 4",
 	"template.page.titre": "Analyse des indicateurs - ",
 	"graph.users.description": "Ce graphique représente le nombre d'utilisateurs connectés à l'application sur une journée. Un point représente une connexion. L'échelle s'ajuste à la visualisation voulue (bots, utilisateurs, tous)",
 	"graph.tapestry.description": "Ce graphique représente l'état des differents pools de page Tapestry. Par défaut, nous visualisons tous les pools. Il est possible de supprimer certains pools du graphique en cliquant sur le nom du pool de page",
 	"graph.pool.description": "Ce graphique représente l'état du pool JDBC. Il s'agit d'une analyse basée sur l'attribut JMX",
 	"graph.thread.description": "Ce graphique représente l'état du pool HTTP. Il s'agit d'une analyse basée sur l'attribut JMX",
-	"graph.apache.description": "Ce graphique représente les temps de réponses des differentes requêtes HTTP. Au passage sur un point, le temps nous est indiqué avec le nom de la ressource demandée. Il s'agit d'une analyse des fichiers access.log"
+	"graph.apache.description": "Ce graphique représente les temps de réponse des differentes requêtes HTTP. Au passage sur un point, le temps nous est indiqué avec le nom de la ressource demandée. Il s'agit d'une analyse des fichiers access.log",
+    "graph.apache.table":"Le tableau fournit les temps de réponse des diffèrentes requêtes HTTP. Concernant les colonnes associées à des pourcentages, il s'agit du pourcentage de pages répondant en x secondes. "
 }

@@ -39,7 +39,12 @@
 
     <p><a class="btn btn-primary btn-lg" id="node2Link" role="button" href="template_rapport.html?noeud=noeud_2"><%=
         __('index.node2')%></a></p>
-
+    
+    <p><a class="btn btn-primary btn-lg" id="node3Link" role="button" href="template_rapport.html?noeud=noeud_3"><%=
+        __('index.node3')%></a></p>
+    
+    <p><a class="btn btn-primary btn-lg" id="node4Link" role="button" href="template_rapport.html?noeud=noeud_4"><%=
+        __('index.node4')%></a></p>
 </div>
 
 <!-- build:js /views/public/javascripts/plugins.js -->
@@ -101,15 +106,29 @@
         $('#node2Link').attr('href', '/template_rapport/' + date + '/node2')
     });
 
+     $('#node3Link').click(function () {
+        var date = formatDateForDatePicker($(datepicker).val(), false);
+        $('#node3Link').attr('href', '/template_rapport/' + date + '/node3')
+    });
+
+      $('#node4Link').click(function () {
+        var date = formatDateForDatePicker($(datepicker).val(), false);
+        $('#node4Link').attr('href', '/template_rapport/' + date + '/node4')
+    });
+
     $("#datepicker").change(function () {
         if ($("#datepicker").val() !== '') {
             $('#node1Link').attr('disabled', false);
             $('#node2Link').attr('disabled', false);
+            $('#node3Link').attr('disabled', false);
+            $('#node4Link').attr('disabled', false);
         }
     });
     if ($("#datepicker").val() === '') {
         $('#node1Link').attr('disabled', true);
         $('#node2Link').attr('disabled', true);
+        $('#node3Link').attr('disabled', true);
+        $('#node4Link').attr('disabled', true);
     }
 
 </script>

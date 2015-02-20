@@ -52,4 +52,17 @@ Installation for production use
 - Enter in the app folder : 'cd dist',
 - Start server : 'NODE_ENV=production node app'.
 
+Release :
+---------------------------------------
+
+# Version 1.0.2
+---------------------------------------
+- Ajout des serveurs 3 et 4
+
+# Version 1.0.1
+---------------------------------------
+- correction rupture dans les graphiques
+- ajout tableau de synthése des temps de réponse
+- Aggregation de données sur les temps de réponse sur une période donnée
+- export CSV des temps de réponse
 

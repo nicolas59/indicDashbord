@@ -1,14 +1,16 @@
 {
-    "name": "indicDashbord",
-    "private": true,
-    "version": "1.0.0",
-    "directory": "/",
-    "dependencies": {
-        "bootstrap": "~3.0.3",
-        "jquery": "~1.11.0",
-        "underscore": "~1.6.0",
-        "d3": "~3.4.4",
-        "jquery.ui": "~1.10.4"
-    },
-    "devDependencies": {}
+  "name": "indicDashbord",
+  "private": true,
+  "version": "1.0.3",
+  "directory": "/",
+  "dependencies": {
+    "bootstrap": "3.0.3",
+    "jquery": "~1.11.0",
+    "underscore": "~1.7.0",
+    "d3": "~3.4.11",
+    "jquery.ui": "~1.10.4",
+    "datatables": "~1.10.2",
+    "moment": "~2.8.3"
+  },
+  "devDependencies": {}
 }

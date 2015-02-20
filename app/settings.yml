@@ -13,7 +13,7 @@ default:
   cron:
     time: '0 23 * * * *'
   shell:
-    dirFile: 'exemples'
+    dirFile: 'exemples/extract'
     sftpServer: '<sftp_username>@<sftp_id>'
   seuil:
     indicateur3: '400'
