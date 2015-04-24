@@ -25,12 +25,17 @@ d3.csv = d3.dsv(';', 'text/log');
 d3.csv(getPathFiles('/monitoringSession.log'), function (error, data) {
     'use strict';
     
+
+
     if(typeof data == "undefined"){
         return;
     }
 
     var maxY = 0;
     var dateDuJour = null;
+    var maxSessionTomcat = 0;
+    var maxUtilisateursConnectes = 0;
+
 
     var validateNumber = function(data, defaultValue){
         if(isNaN(data)){
@@ -49,9 +54,17 @@ d3.csv(getPathFiles('/monitoringSession.log'), function (error, data) {
         d.hourForPopin = formatDateToHour(d.dateHeure);
         d.heure = getHourInDate(d.dateHeure);
         d.dateHeure = formatDate(d.date, d.dateHeure);
+        d.userSession = getNumber(d.userSession);
+        d.tomcatSession = getNumber(d.tomcatSession);
 
         //calcul du maxY
         maxY = Math.max(maxY, d.userSession, d.tomcatSession);
+
+        //calcul max Session Tomcat
+         maxSessionTomcat = Math.max(maxSessionTomcat, d.tomcatSession);;
+     
+        //calcul max Utilisateurs Connectes
+        maxUtilisateursConnectes = Math.max(maxUtilisateursConnectes, d.userSession);;
     });
 
 //gestion des axes X et Y.
@@ -222,9 +235,14 @@ d3.csv(getPathFiles('/monitoringSession.log'), function (error, data) {
 
             displayPopin(popinGraphPointStat, createHtmlForSesssionpPopin(x, xPos, valueYTomcatSession, valueYUserSession), d3);
 
-        }
-    )
-    ;
-});
+        });
+    //Ajout des valeurs dans le tableau des statistiques
+    putInResumeStat('resume_nbrSessionTomcat', maxSessionTomcat);
+    putInResumeStat('resume_nbrUtilisateursConnectes', maxUtilisateursConnectes);
 
+    setTimeout(function(){
+        updateIndicateur()
+    }, 1000);
+
+});
 })();

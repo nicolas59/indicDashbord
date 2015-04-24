@@ -28,6 +28,8 @@ exports.template_rapport = function(req, res){
             seuilIndicateur9: settings.seuil.indicateur9,
             seuilIndicateur10: settings.seuil.indicateur10,
             seuilIndicateur11: settings.seuil.indicateur11,
+            seuilIndicateur12: settings.seuil.indicateur12,
+            seuilIndicateur13: settings.seuil.indicateur13,
             maxIndicateur3: settings.max.indicateur3,
             maxIndicateur4: settings.max.indicateur4,
             maxIndicateur5: settings.max.indicateur5,
@@ -36,7 +38,9 @@ exports.template_rapport = function(req, res){
             maxIndicateur8: settings.max.indicateur8,
             maxIndicateur9: settings.max.indicateur9,
             maxIndicateur10: settings.max.indicateur10,
-            maxIndicateur11: settings.max.indicateur11
+            maxIndicateur11: settings.max.indicateur11,
+            maxIndicateur12: settings.max.indicateur12,
+            maxIndicateur13: settings.max.indicateur13
         });
 };
 var qs = require('querystring');

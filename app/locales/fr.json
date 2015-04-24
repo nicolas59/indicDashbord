@@ -29,6 +29,8 @@
 	"template.indicateur9": "Pourcentage/Nombre de requêtes de moins de 1s",
 	"template.indicateur10": "Pourcentage/Nombre de requêtes de plus de 2s",
 	"template.indicateur11": "Pourcentage/Nombre de requêtes de plus de 10s",
+	"template.indicateur12": "Nombre max de sessions tomcat",
+	"template.indicateur13": "Nombre max d'utilisateurs connectés",
 	"index.node1": "Node 1",
 	"index.node2": "Node 2",
 	"index.node3": "Node 3",
@@ -42,5 +44,4 @@
 	"graph.apache.table": "Le tableau fournit les temps de réponse des diffèrentes requêtes HTTP. Concernant les colonnes associées à des pourcentages, il s'agit du pourcentage de pages répondant en x secondes. ",
 	"template.col5": "template.col5",
 	"graph.session.description": "Ce graphique represente le nombre de sessions tomcat et le nombre de sessions d'utilisateurs connectés"
-	
 }

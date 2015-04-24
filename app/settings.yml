@@ -13,7 +13,7 @@ default:
   cron:
     time: '0 23 * * * *'
   shell:
-    dirFile: 'exemples/extract'
+    dirFile: 'exemples'
     sftpServer: '<sftp_username>@<sftp_id>'
   seuil:
     indicateur3: '400'
@@ -25,6 +25,8 @@ default:
     indicateur9: '98%'
     indicateur10: '2%'
     indicateur11: '1%'
+    indicateur12: '300'
+    indicateur13: '300'
   max:
     indicateur3: '500'
     indicateur4: '500'
@@ -35,6 +37,8 @@ default:
     indicateur9: '100%'
     indicateur10: '0%'
     indicateur11: '0%'
+    indicateur12: '400'
+    indicateur13: '400'
 production:
   http:
     port: 3000
@@ -62,6 +66,8 @@ production:
     indicateur9: '98%'
     indicateur10: '2%'
     indicateur11: '1%'
+    indicateur12: '300'
+    indicateur13: '300'
   max:
     indicateur3: '500'
     indicateur4: '500'
@@ -72,3 +78,5 @@ production:
     indicateur9: '100%'
     indicateur10: '0%'
     indicateur11: '0%'
+    indicateur12: '400'
+    indicateur13: '400'

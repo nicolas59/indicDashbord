@@ -300,14 +300,11 @@ function updateIndicateur() {
         var seuil = NaN;
         var indicateurPourcentageRequetes = false;
         $(this).find('td').each(function (index) {
-            if (index == 0 && $(this).text().trim() == '7') {
-                indicateurPourcentageRequetes = true;
-            }
             if (index == 2) {
                 valeur = parseFloat($(this).text().trim(), 10);
             }
             if (index == 3) {
-                seuil = parseFloat($(this).text(), 10);
+                seuil = parseFloat($(this).text().trim(), 10);
             }
         });
         if (!isNaN(seuil)) {
@@ -327,5 +324,12 @@ function updateIndicateur() {
             }
         }
     });
+}
+
+ function getNumber(data, defaultValue){
+    if(isNaN(data)){
+        return defaultValue!== undefined?defaultValue:0;
+    }
+    return data;
 }
 
