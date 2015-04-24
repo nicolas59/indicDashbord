@@ -212,7 +212,7 @@ d3.csv(getPathFiles('/monitoring_app_thread_http.log'), function (error, data) {
         .attr('dy', '1em')
         .text('Thread Http');
 
-//Action sur le mouvement de la sourie
+//Action sur le mouvement de la souris
     rect.on('mousemove', function () {
 
             //declaration des variables

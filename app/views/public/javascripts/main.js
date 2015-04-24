@@ -230,6 +230,26 @@ function createHtmlForThreadHttpPopin(x, xPos, valueYMaxThread, valueYCurrentCou
 }
 
 /**
+ * Cree le contenu HTML pour la popin du nombre de sessions
+ * @param data a transformer en HTML
+ * @returns {string} HTML
+ */
+function createHtmlForSesssionpPopin(x, xPos, valueYMaxTomcatSession, valueYUserSession) {
+    var html = '';
+    html += '<h4>Statistiques</h4>';
+    html += '<div><label>Heure : </label><span class=\'label label-default\'>';
+    html += (x.invert(xPos)).toLocaleTimeString();
+    html += '</span></div>';
+    html += '<div  style=\'color:blue;\' ><label>Nbr de sessions : </label><span class=\'label label-default\'>';
+    html += valueYMaxTomcatSession;
+    html += '</span></div>';
+    html += '<div  style=\'color:pink;\' ><label>Nbr d\'utilisateurs connectés : </label><span class=\'label label-default\'>';
+    html += valueYUserSession;
+    html += '</span></div>';
+    return html;
+}
+
+/**
  * Cree le contenu HTML pour la popin JDBC
  * @param data a transformer en HTML
  * @returns {string} HTML

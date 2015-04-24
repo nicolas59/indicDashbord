@@ -51,6 +51,7 @@
     <li><a href="#graphiqueTapestry"><%= __('template.tab3')%></a></li>
     <li><a href="#graphThreadPool"><%= __('template.tab4')%></a></li>
     <li><a href="#graphJDBC"><%= __('template.tab5')%></a></li>
+    <li><a href="#graphSession"><%= __('template.tab7')%></a></li>
 </ul>
 
 <div class="tab-content">
@@ -72,6 +73,7 @@
                     <th><%= __('template.col2')%></th>
                     <th><%= __('template.col3')%></th>
                     <th><%= __('template.col4')%></th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -136,6 +138,7 @@
                     <td id="max_nbrMaxConnexionBusy"><%=maxIndicateur8%></td>
 
                 </tr>
+
 <!--
                 <tr>
                     <td>7</td>
@@ -194,8 +197,9 @@
         <div class="well well-sm well-perso"><%= __('graph.thread.description')%></div>
     </div>
 
-
-
+    <div class="tab-pane" id="graphSession">
+        <div class="well well-sm well-perso"><%= __('graph.session.description')%></div>
+    </div>
 </div>
 
 
@@ -287,6 +291,7 @@
 <script src="/public/javascripts/tapestryMonitoring.js"></script>
 <script src="/public/javascripts/databaseMonitoring.js"></script>
 <script src="/public/javascripts/threadMonitoring.js"></script>
+<script src="/public/javascripts/sessionMonitoring2.js"></script>
 
 <!-- endbuild -->
 <script>

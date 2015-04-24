@@ -83,6 +83,7 @@ function get_log_tomcat(){
             get -p monitoringLogin.log
             get -p monitoringPoolPageTapestry.log
             get -p monitoringPoolDatabase.log
+            ##get -p monitoringSession.log
             quit
 EOF
     #Ajout des entetes aux fichiers CSV
@@ -97,6 +98,10 @@ EOF
     echo "date;heure;page;inuse;available;max" >> temp
     cat monitoringPoolPageTapestry.log >> temp
     mv temp monitoringPoolPageTapestry.log
+
+    ##echo "date;dateHeure;tomcatSession;userSession" >> temp
+    ##cat monitoringSesssion.log >> temp
+    ##mv temp monitoringSesssion.log
 
     mv monitoring_app_thread_http_* monitoring_app_thread_http.log
 }

@@ -12,11 +12,12 @@
 	"template.tab4": "Thread HTTP",
 	"template.tab5": "Pool JDBC",
 	"template.tab6": "Apache HTTP",
+	"template.tab7": "Sessions",
 	"template.head": "Résumé des graphiques",
 	"template.col1": "Nom de l'indicateur",
 	"template.col2": "Valeur",
 	"template.col3": "Seuil d'alerte",
-    "template.col4": "Max",
+	"template.col4": "Max",
 	"template.indicateur1": "Nombre d'utilisateurs/bots : ",
 	"template.indicateur2": "Nombre d'utilisateurs/bots max sur une heure : ",
 	"template.indicateur3": "Nombre max du cache Tapestry",
@@ -38,5 +39,8 @@
 	"graph.pool.description": "Ce graphique représente l'état du pool JDBC. Il s'agit d'une analyse basée sur l'attribut JMX",
 	"graph.thread.description": "Ce graphique représente l'état du pool HTTP. Il s'agit d'une analyse basée sur l'attribut JMX",
 	"graph.apache.description": "Ce graphique représente les temps de réponse des differentes requêtes HTTP. Au passage sur un point, le temps nous est indiqué avec le nom de la ressource demandée. Il s'agit d'une analyse des fichiers access.log",
-    "graph.apache.table":"Le tableau fournit les temps de réponse des diffèrentes requêtes HTTP. Concernant les colonnes associées à des pourcentages, il s'agit du pourcentage de pages répondant en x secondes. "
+	"graph.apache.table": "Le tableau fournit les temps de réponse des diffèrentes requêtes HTTP. Concernant les colonnes associées à des pourcentages, il s'agit du pourcentage de pages répondant en x secondes. ",
+	"template.col5": "template.col5",
+	"graph.session.description": "Ce graphique represente le nombre de sessions tomcat et le nombre de sessions d'utilisateurs connectés"
+	
 }
