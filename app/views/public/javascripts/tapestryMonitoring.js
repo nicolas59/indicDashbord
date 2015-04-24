@@ -157,4 +157,6 @@ d3.csv(getPathFiles('/monitoringPoolPageTapestry.log'), function (error, data) {
     //Ajout des valeurs dans le tableau des statistiques
     putInResumeStat('resume_nbrTapestryMax', maxCache);
 
+    //Permet de changer la couleur des lignes du tableau de statistiques
+    updateIndicateur();
 });
