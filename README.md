@@ -54,6 +54,10 @@ Installation for production use
 
 Release :
 ---------------------------------------
+#version 1.0.6
+---------------------------------------
+- Correction sur conversion des heures
+
 
 # Version 1.0.2
 ---------------------------------------

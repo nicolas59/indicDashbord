@@ -115,7 +115,22 @@ function formatDateToHour(date) {
  * @return {Date}
  */
 function formatDate(date, heure) {
-    return new Date(date.substring(0, 4), parseInt(date.substring(4, 6)) - 1, date.substring(6, 8), heure.substring(0, 2), heure.substring(3, 5), '00', '00');
+    var ret;
+    if(heure.indexOf(":")>=0){
+        ret = new Date(date.substring(0, 4), 
+            parseInt(date.substring(4, 6)) - 1, 
+            date.substring(6, 8), 
+            heure.substring(0, 2), 
+            heure.substring(3, 5), '00', '00');
+    }else{
+          ret = new Date(date.substring(0, 4), 
+            parseInt(date.substring(4, 6)) - 1, 
+            date.substring(6, 8), 
+            heure.substring(0, 2), 
+            heure.substring(2, 4), '00', '00');
+    }
+    console.log(ret);
+    return ret;
 }
 
 
@@ -326,10 +341,14 @@ function updateIndicateur() {
     });
 }
 
- function getNumber(data, defaultValue){
+ function getNumber(data, defaultValue, onlyPositiveNumber){
     if(isNaN(data)){
         return defaultValue!== undefined?defaultValue:0;
     }
+    if(onlyPositiveNumber && data<0){
+        data = 0;
+    }
+
     return data;
 }
 

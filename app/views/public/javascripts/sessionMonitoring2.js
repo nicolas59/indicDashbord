@@ -54,8 +54,8 @@ d3.csv(getPathFiles('/monitoringSession.log'), function (error, data) {
         d.hourForPopin = formatDateToHour(d.dateHeure);
         d.heure = getHourInDate(d.dateHeure);
         d.dateHeure = formatDate(d.date, d.dateHeure);
-        d.userSession = getNumber(d.userSession);
-        d.tomcatSession = getNumber(d.tomcatSession);
+        d.userSession = getNumber(d.userSession, 0, true);
+        d.tomcatSession = getNumber(d.tomcatSession, 0, true);
 
         //calcul du maxY
         maxY = Math.max(maxY, d.userSession, d.tomcatSession);
